@@ -21,7 +21,7 @@ services:
       - host.docker.internal:host-gateway
     tty: true
 
-  epsi-dle-pwa:
+  pwa:
     build:
       context: ./pwa
       target: dev
