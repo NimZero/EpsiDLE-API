@@ -1,5 +1,5 @@
 api_platform:
-    title: Hello API Platform
+    title: EPSI DLE
     version: 1.0.0
     # Mercure integration, remove if unwanted
     mercure: ~
@@ -9,6 +9,12 @@ api_platform:
         jsonld: ['application/ld+json']
         jsonopenapi: ['application/vnd.openapi+json']
         html: ['text/html']
+    swagger:
+        api_keys:
+             firebase:
+                name: Authorization
+                type: header
+
     # Good defaults for REST APIs
     defaults:
         stateless: true
