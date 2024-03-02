@@ -13,6 +13,7 @@ use App\Repository\CharacterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CharacterRepository::class)]
 #[ApiResource()]
@@ -29,24 +30,31 @@ class Character
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 50)]
     private ?string $lastname = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 50)]
     private ?string $firstname = null;
 
+    #[Assert\Positive()]
     #[ORM\Column]
     private ?int $height = null;
 
+    #[Assert\LessThan('today')]
     #[ORM\Column]
     private ?\DateTimeImmutable $birthdate = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 50)]
     private ?string $hairColor = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 50)]
     private ?string $astrologicalSign = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 50)]
     private ?string $programmingLanguage = null;
 

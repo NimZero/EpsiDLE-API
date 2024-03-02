@@ -12,6 +12,8 @@ use ApiPlatform\Metadata\Put;
 use App\Repository\AnectodeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: AnectodeRepository::class)]
 #[ApiResource()]
@@ -32,6 +34,7 @@ class Anectode
     #[ORM\JoinColumn(nullable: false)]
     private ?Character $character = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $text = null;
 
