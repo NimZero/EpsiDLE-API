@@ -1,19 +1,19 @@
 # Production environment override
 services:
-  server:
+  php:
     build:
-      context: ./api
+      context: .
       target: frankenphp_prod
     environment:
       APP_SECRET: ${APP_SECRET}
       MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
       MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
-
-  pwa:
-    build:
-      context: ./pwa
-      target: prod
-
-  # database:
-  #   environment:
-  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      # HTTP
+      - target: 80
+        published: ${HTTP_PORT:-80}
+        protocol: tcp
+      # HTTP/3
+      - target: 80
+        published: ${HTTP3_PORT:-80}
+        protocol: udp

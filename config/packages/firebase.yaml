@@ -1,0 +1,6 @@
+kreait_firebase:
+    projects:
+        epsidle:
+            credentials: '%kernel.project_dir%/config/firebase_credentials.json'
+            default: true
+            public: false
