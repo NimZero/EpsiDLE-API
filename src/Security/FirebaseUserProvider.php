@@ -53,7 +53,9 @@ class FirebaseUserProvider implements UserProviderInterface
             throw new UnsupportedUserException(sprintf('Invalid user class "%s".', get_class($user)));
         }
 
-        return $this->loadUserByIdentifier($user->getFirebaseUUID());
+        return $user;
+
+        // return $this->loadUserByIdentifier($user->getFirebaseUUID());
     }
 
     public function supportsClass(string $class): bool
