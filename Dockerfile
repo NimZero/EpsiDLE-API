@@ -65,8 +65,6 @@ RUN set -eux; \
 
 COPY --link frankenphp/conf.d/app.dev.ini $PHP_INI_DIR/conf.d/
 
-RUN curl -fsSL https://bun.sh/install | bash
-
 CMD [ "frankenphp", "run", "--config", "/etc/caddy/Caddyfile", "--watch" ]
 
 # Prod FrankenPHP image
