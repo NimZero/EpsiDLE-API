@@ -18,6 +18,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection(),
+    ]
+)]
+#[ApiResource(
     uriTemplate: '/characters/{characterId}/images',
     uriVariables: [
         'characterId' => new Link(fromClass: Character::class, toClass: self::class, fromProperty: 'character')

@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Put(security: "is_granted('ROLE_ADMIN')"),
         new Delete(security: "is_granted('ROLE_ADMIN')"),
         new Patch(security: "is_granted('ROLE_ADMIN')"),
-    ]
+    ],
 )]
 class Character
 {
@@ -75,7 +75,16 @@ class Character
 
     public function __toString()
     {
-        return $this->lastname . ' ' . $this->firstname;
+        return $this->getDisplayName();
+    }
+
+    public function getDisplayName(): string
+    {
+        return sprintf(
+            '%s %s',
+            mb_strtoupper($this->lastname),
+            ucfirst(mb_strtolower($this->firstname))
+        );
     }
 
     public function getId(): ?int

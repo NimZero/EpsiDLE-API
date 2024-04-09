@@ -18,6 +18,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnecdoteRepository::class)]
 #[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection(),
+    ]
+)]
+#[ApiResource(
     uriTemplate: '/characters/{characterId}/anecdotes',
     uriVariables: [
         'characterId' => new Link(fromClass: Character::class, toClass: self::class, fromProperty: 'character')
